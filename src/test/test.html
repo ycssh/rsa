@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="./jquery-3.2.1.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#payRegist").click(function(){
+                $.ajax({
+                    url:"http://localhost:8011/test",
+                    contentType:"application/json",
+                    data:{
+                        "key": "aZqtgluDnG7vcJMtAX6GnCs8gGmYxgKYPfTAx9ANRvgwqUfvEQTtW+Pb6Lt/h+HIeynXUWkpQAZIbkVRrmsUIOhGBOL+3ZaKxtRhC+w962og/SkxLXmKRoSZMfAvSbx8UN8LGL9pnNMcC6y1H6aHXyNf4MN+j33tkOmri6FTcUg=",
+                        "data": "dMpwIBgNhy9XcLee8FyFrVDdYhjp9+MwqyYRYV8L7GM=",
+                        "businessNo": "12345678"
+                    },
+                    success:function (data) {
+                       $("#result").html(data)
+                    },
+                    dataType:"json",
+                    method:"post"
+                })
+            })
+        })
+
+    </script>
+</head>
+<body>
+<input type="button" value="支付注册" id="payRegist"/>
+
+<div id="result" style="width: 100%;height: 500px"></div>
+</body>
+</html>

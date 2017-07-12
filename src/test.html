@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="./jquery-3.2.1.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var rowData1 = {
+                "key": "aZqtgluDnG7vcJMtAX6GnCs8gGmYxgKYPfTAx9ANRvgwqUfvEQTtW+Pb6Lt/h+HIeynXUWkpQAZIbkVRrmsUIOhGBOL+3ZaKxtRhC+w962og/SkxLXmKRoSZMfAvSbx8UN8LGL9pnNMcC6y1H6aHXyNf4MN+j33tkOmri6FTcUg=",
+                "data": "dMpwIBgNhy9XcLee8FyFrVDdYhjp9+MwqyYRYV8L7GM=",
+                "businessNo": "12345678"
+            };
+            var rowData2 = {
+                "key": "",
+                "data":"{\"userid\":1000,\"hour\":100}",
+                "businessNo":"12345678",
+                "encrypted":0
+            };
+            var rowData3 = {"key":"aZqtgluDnG7vcJMtAX6GnCs8gGmYxgKYPfTAx9ANRvgwqUfvEQTtW+Pb6Lt/h+HIeynXUWkpQAZIbkVRrmsUIOhGBOL+3ZaKxtRhC+w962og/SkxLXmKRoSZMfAvSbx8UN8LGL9pnNMcC6y1H6aHXyNf4MN+j33tkOmri6FTcUg=33",
+                "data":"{\"userid\":1000}",
+                "businessNo":"12345678",
+                "encrypted":0
+            };
+            var rowData4 = {"key":"aZqtgluDnG7vcJMtAX6GnCs8gGmYxgKYPfTAx9ANRvgwqUfvEQTtW+Pb6Lt/h+HIeynXUWkpQAZIbkVRrmsUIOhGBOL+3ZaKxtRhC+w962og/SkxLXmKRoSZMfAvSbx8UN8LGL9pnNMcC6y1H6aHXyNf4MN+j33tkOmri6FTcUg=33",
+                "data":"{\"token\":\"sdddddddddkdlfkdlf\"}",
+                "businessNo":"12345678",
+                "encrypted":0
+            };
+            var rowData5 = {"key":"aZqtgluDnG7vcJMtAX6GnCs8gGmYxgKYPfTAx9ANRvgwqUfvEQTtW+Pb6Lt/h+HIeynXUWkpQAZIbkVRrmsUIOhGBOL+3ZaKxtRhC+w962og/SkxLXmKRoSZMfAvSbx8UN8LGL9pnNMcC6y1H6aHXyNf4MN+j33tkOmri6FTcUg=33",
+                "data":"{\"userid\":1000}",
+                "businessNo":"12345678",
+                "encrypted":0
+            };
+            $("#payRegist").click(function(){
+                $.ajax({
+                    url:"http://localhost:8011/payRegist",
+                    contentType:"application/json",
+                    data:JSON.stringify(rowData1),
+                    success:function (data) {
+                        $("#flag").text(data.flag);
+                        $("#msg").text(data.msg);
+                        $("#data").text(data.data);
+                    },
+                    dataType:"json",
+                    method:"post"
+                })
+            });
+            $("#payRegist2").click(function(){
+                $.ajax({
+                    url:"http://localhost:8011/payRegist",
+                    contentType:"application/json",
+                    data:JSON.stringify(rowData2),
+                    success:function (data) {
+                        $("#flag").text(data.flag);
+                        $("#msg").text(data.msg);
+                        $("#data").text(data.data);
+                    },
+                    dataType:"json",
+                    method:"post"
+                })
+            })
+            $("#payRegist3").click(function(){
+                $.ajax({
+                    url:"http://localhost:8011/revokeregist",
+                    contentType:"application/json",
+                    data:JSON.stringify(rowData3),
+                    success:function (data) {
+                        $("#flag").text(data.flag);
+                        $("#msg").text(data.msg);
+                        $("#data").text(data.data);
+                    },
+                    dataType:"json",
+                    method:"post"
+                })
+            })
+            $("#payRegist4").click(function(){
+                $.ajax({
+                    url:"http://localhost:8011/user/info",
+                    contentType:"application/json",
+                    data:JSON.stringify(rowData4),
+                    success:function (data) {
+                        $("#flag").text(data.flag);
+                        $("#msg").text(data.msg);
+                        $("#data").text(data.data);
+                    },
+                    dataType:"json",
+                    method:"post"
+                })
+            })
+            $("#payRegist5").click(function(){
+                $.ajax({
+                    url:"http://localhost:8011/user/hours",
+                    contentType:"application/json",
+                    data:JSON.stringify(rowData5),
+                    success:function (data) {
+                        $("#flag").text(data.flag);
+                        $("#msg").text(data.msg);
+                        $("#data").text(data.data);
+                    },
+                    dataType:"json",
+                    method:"post"
+                })
+            })
+        })
+
+    </script>
+</head>
+<body>
+<input type="button" value="支付注册加密" id="payRegist"/>
+<input type="button" value="支付注册不加密" id="payRegist2"/>
+<input type="button" value="取消注册" id="payRegist3"/>
+<input type="button" value="用户信息" id="payRegist4"/>
+<input type="button" value="时长" id="payRegist5"/>
+
+<div id="result" style="width: 100%;height: 500px">
+    <div id="flag"></div>
+    <div id="msg"></div>
+    <div id="data"></div>
+</div>
+</body>
+</html>
